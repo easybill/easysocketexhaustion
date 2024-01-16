@@ -21,13 +21,14 @@ async fn main() -> ::anyhow::Result<()> {
 
     println!("Hello, world!");
 
+    let mut listens = vec![];
     for listen in opts.ips_listen {
-
+        listens.push(spawn_listen(listen).await.context("could not listen")?)
     }
 
+    let (res, _, _) = ::futures::future::select_all(listens).await;
 
-
-    Ok(())
+    Ok(res?)
 }
 
 async fn spawn_listen(interface: String) -> Result<JoinHandle<()>, ::anyhow::Error> {
