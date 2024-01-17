@@ -15,6 +15,15 @@ check the number of open connections
 lsof -i -P | grep ":1337" | wc -l
 ```
 
+# Downloads
+
+## Download
+You can download the latest binaries from the [releases page](https://github.com/easybill/easysocketexhaustion/releases) or use these permalinks for the latest version:
+- [easysocketexhaustion_linux_latest_x86_64](https://github.com/easybill/easysocketexhaustion/releases/latest/download/easysocketexhaustion_ubuntu-latest_x86_64)
+- [easysocketexhaustion_linux_latest_aarch64](https://github.com/easybill/easysocketexhaustion/releases/latest/download/easysocketexhaustion_ubuntu-latest_aarch64)
+- [easysocketexhaustion_mac_latest_aarch64](https://github.com/easybill/easysocketexhaustion/releases/latest/download/easysocketexhaustion_mac_aarch64)
+- [easysocketexhaustion_mac_x86_64](https://github.com/easybill/easysocketexhaustion/releases/latest/download/easysocketexhaustion_mac_x86_64)
+
 # Parameters in Detail
 
 
