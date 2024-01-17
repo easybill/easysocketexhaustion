@@ -31,7 +31,7 @@ struct Opts {
     wait_new_client_microseconds: u64,
 }
 
-#[tokio::main(flavor = "multi_thread", worker_threads = 10)]
+#[tokio::main(flavor = "multi_thread", worker_threads = 15)]
 async fn main() -> ::anyhow::Result<()> {
     let opts = Opts::parse();
 
