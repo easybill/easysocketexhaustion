@@ -31,7 +31,7 @@ struct Opts {
     wait_new_client_microseconds: u64,
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "multi_thread", worker_threads = 10)]
 async fn main() -> ::anyhow::Result<()> {
     let opts = Opts::parse();
 
@@ -87,7 +87,7 @@ async fn spawn_bench(instance: u64, ip: String) {
             loop {
                 ::tokio::select! {
                     _ = wtoken.cancelled() => {
-                        return;
+                        break;
                     },
                     v = w.write_all("test".as_bytes()) => {
                         match v {
@@ -112,14 +112,14 @@ async fn spawn_bench(instance: u64, ip: String) {
             loop {
                 ::tokio::select! {
                      _ = rtoken.cancelled() => {
-                        return;
+                        break;
                     },
                     v = r.read(&mut buffer) => {
                         match v {
                             Ok(k) => {
 
                                 if (k == 0) {
-                                    return;
+                                    break;
                                 }
 
                                 BYTES_RECV_CLIENT.fetch_add(k as u64, Relaxed);
