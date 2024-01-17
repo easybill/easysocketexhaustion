@@ -9,4 +9,5 @@ edition = "2021"
 anyhow = "1.0.79"
 clap = { version = "4.4.17", features = ["derive"] }
 tokio = { version = "*", features = ["full"] }
+tokio-util = { version = "*", features = ["full"] }
 futures = "0.3.*"
